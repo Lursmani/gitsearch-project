@@ -1,0 +1,159 @@
+.git-user-card {
+    height: 20vh;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(12, 1fr);
+    margin: 1em 0;
+    box-shadow: 1px 1px 3px gray;
+    border-radius: 10px;
+}
+.git-user-pic {
+    height: 90%;
+    grid-row: 1/3;
+    grid-column: 1/4;
+    padding: 1em;
+    align-self: center;
+    justify-self: center;
+}
+.git-user-name {
+    grid-row: 1/2;
+    grid-column: 4/9;
+    align-self: center;
+    font-size: 1.3em;
+    margin: 0;
+}
+.git-user-type {
+    grid-row: 2/3;
+    grid-column: 4/9;
+    align-self: center;
+    margin: 0;
+}
+.git-user-repo {
+    grid-row: 1/3;
+    grid-column: 10/13;
+    align-self: center;
+    justify-self: center;
+}
+
+
+
+.git-btn-group-div {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(12, 1fr);
+}
+.git-btn-group {
+    grid-column: 6/10;
+    padding: 0 1em;
+}
+.git-btn-group-text {
+    grid-column: 4/6;
+    font-size: 1.5em;
+    align-self: center;
+    padding: 0 1em;
+}
+
+
+
+.git-results-outer-div {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    margin: 1em 0;
+}
+.git-results-info-text {
+    grid-column: 4/9;
+}
+.git-results-div {
+    grid-column: 4/10;
+}
+
+
+.git-userpages-div {
+    display: grid;
+    grid-gap: 0.2em;
+    
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(24, 1fr);
+    margin: 1em 0;
+}
+.git-userpages-left {
+    grid-column: 7/9;
+}
+.git-userpages-number {
+    grid-column: 11/14;
+    margin: 0;
+}
+.git-userpages-go {
+    grid-column: 14/15;
+}
+.git-userpages-right {
+    grid-column: 17/19;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .git-btn-group {
+        grid-column: 4/13;
+    }
+    .git-btn-group-text {
+        grid-column: 1/4;
+        font-size: 1.1em;
+    }
+
+    .git-results-div {
+        grid-column: 1/13;
+    }
+    .git-results-info-text {
+        grid-column: 1/13;
+    }
+    .git-user-card {
+        max-width: 100%;
+        overflow: hidden;
+        margin: 1em 0;
+    }
+    .git-user-name {
+        font-size: 1.1em;
+        grid-column: 5/13;
+        align-self: center;
+        margin: 0;
+    }
+    .git-user-type {
+        grid-column: 5/9;
+        margin: 0;
+    }
+    .git-user-pic {
+        grid-column: 1/5;
+    }
+    .git-user-repo {
+        grid-row: 2/3;
+        grid-column: 9/13;
+        
+    }
+
+    .git-userpages-left {
+        grid-column: 1/7;
+    }
+    .git-userpages-number {
+        grid-column: 8/16;
+        margin: 0;
+    }
+    .git-userpages-go {
+        grid-column: 16/17;
+    }
+    .git-userpages-right {
+        grid-column: 18/25;
+    }
+}
+@media only screen and (max-width: 350px) {
+    .git-btn-group-div {
+        grid-template-rows: 1fr 1fr;
+    }
+    .git-btn-group-text {
+        grid-row: 1/2;
+        grid-column: 1/13;
+    }
+    .git-btn-group {
+        grid-row: 2/3;
+        grid-column: 1/13;
+    }
+}
