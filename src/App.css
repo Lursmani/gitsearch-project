@@ -6,4 +6,7 @@
   display: grid;
   grid-row: 2/3;
 }
+.nav-offset{
+  z-index: -1;
+}
 

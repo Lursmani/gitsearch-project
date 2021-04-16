@@ -71,7 +71,6 @@
 .git-userpages-div {
     display: grid;
     grid-gap: 0.2em;
-    
     grid-template-rows: 1fr;
     grid-template-columns: repeat(24, 1fr);
     margin: 1em 0;

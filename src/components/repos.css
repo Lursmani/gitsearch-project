@@ -1,0 +1,165 @@
+.git-repos-btn-group-div {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(12, 1fr);
+}
+.git-repos-btn-group {
+    grid-column: 6/10;
+    padding: 0 1em;
+}
+.git-repos-btn-group-text {
+    grid-column: 4/6;
+    font-size: 1.5em;
+    align-self: center;
+    padding: 0 1em;
+}
+
+
+
+.git-repos-container {
+  display: grid;
+  width: 100%;
+  min-height: 80vh;
+}
+.git-repos-div {
+  display: grid;
+  justify-self: center;
+  padding: 1em;
+  width: 80%;
+  grid-template-rows: repeat(4, auto);
+  grid-template-columns: repeat(9, 1fr);
+  box-shadow: 1px 1px 3px black;
+  margin: 0.6em 0;
+  border-radius: 5px;
+}
+.git-repos-div > p {
+    margin: 0;
+}
+.git-repos-name {
+    grid-row: 1/2;
+    grid-column: 1/7;
+    margin: 0;
+}
+.git-repos-language {
+    grid-row: 2/3;
+    grid-column: 1/7;
+}
+.git-repos-license {
+    grid-row: 3/4;
+    grid-column: 1/7;
+}
+.git-repos-update {
+    grid-row: 4/5;
+    grid-column: 1/7;
+}
+
+.git-repos-numbers {
+  display: grid;
+  grid-column: 7/10;
+  grid-row: 1/5;
+  align-items: center;
+}
+.git-repos-numbers > p {
+    margin: 0;
+}
+.git-repos-stars {
+    grid-row: 1/2;
+}
+.git-repos-forks {
+    grid-row: 2/3;
+}
+.git-repos-issues {
+    grid-row: 3/4;
+}
+
+
+.git-repos-userpages-div {
+    display: grid;
+    grid-gap: 0.2em;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(24, 1fr);
+    margin: 1em 0;
+}
+.git-repos-userpages-left {
+    grid-column: 7/9;
+}
+.git-repos-userpages-number {
+    grid-column: 11/14;
+    margin: 0;
+}
+.git-repos-userpages-go {
+    grid-column: 14/15;
+}
+.git-repos-userpages-right {
+    grid-column: 17/19;
+}
+
+
+
+@media only screen and (max-width: 576px) {
+    .git-repos-btn-group {
+        grid-column: 4/13;
+    }
+    .git-repos-btn-group-text {
+        grid-column: 1/4;
+        font-size: 1.1em;
+    }
+ 
+    .git-repos-container {
+      grid-template-rows: repeat(5, 1fr);
+  }
+  .git-repos-div {
+      width: 95%;
+  }
+  .git-repos-name {
+      grid-column: 1/10;
+  }
+  .git-repos-language {
+    grid-column: 1/10;
+  }
+  .git-repos-license {
+    grid-column: 1/10;
+  }
+  .git-repos-update {
+    grid-column: 1/10;
+  }
+
+  .git-repos-numbers {
+      grid-row: 5/6;
+      grid-column: 1/10;
+      grid-template-rows: auto;
+      grid-template-columns: 1fr 1fr 1fr;
+      margin-top: 15px;
+  }
+  .git-repos-stars {
+      grid-row: 1/2;
+      grid-column: 1/2;
+
+  }
+  .git-repos-forks {
+      grid-row: 1/2;
+  }
+  .git-repos-issues {
+      grid-row: 1/2;
+  }
+
+
+  .git-repos-userpages-div {
+      padding: 0 2.5%;
+  }
+  .git-repos-userpages-left {
+        grid-column: 1/7;
+    }
+  .git-repos-userpages-number {
+        grid-column: 8/16;
+        margin: 0;
+    }
+  .git-repos-userpages-go {
+        grid-column: 16/17;
+    }
+  .git-repos-userpages-right {
+        grid-column: 18/25;
+    }
+
+  
+}

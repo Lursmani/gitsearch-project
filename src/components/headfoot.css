@@ -1,14 +1,28 @@
 .header {
   width: 100%;
   height: 10vh;
-  background-color: blue;
+  background-color: #252525;
   grid-row: 1/2;
+  display: grid;
+}
+.header > a {
+  text-decoration: none;
+  justify-self: center;
+  align-self: center;
+  font-size: 2em;
+  color: #d8e8f5;
 }
 .nav-offset {
-
+  z-index: -1;
 }
 .footer {
     height: 10vh;
-    background-color: blue;
+    background-color: #252525;
     grid-row: 3/4;
+    display: grid;
+}
+.footer > * {
+  justify-self: center;
+  align-self: center;
+  color: #d8e8f5;
 }

@@ -15,11 +15,11 @@ export default function Search(props) {
     const [user, setUser] = useState({})
     const [searchText, setSearchText] = useState("")
     const [result, setResult]= useState({})
-    const [page, setPage] = useState(2)
+    const [page, setPage] = useState(1)
     const [pageCounter, setPageCounter] = useState(1)
     const [totalPages, setTotalPages] = useState()
     const [type, setType] = useState("Any")
-    const [message, setMessage] = useState("")
+    const [loaded, setLoaded] = useState(false)
     
     useEffect(() => {
         if (searchText !== "") {
@@ -30,6 +30,7 @@ export default function Search(props) {
                 setResult(results)
                 setTotalPages(Math.ceil(results.total_count / 10))
                 console.log(Math.ceil(results.total_count / 10))
+                setLoaded(true)
             }
         )
         .catch (error => console.log(`Something went wrong: ${error}`))
@@ -41,8 +42,9 @@ export default function Search(props) {
 
     const renderResults = () => {
         const results = result
+        let regex = /(((\w|\d)\w+)|((\w|\d))\/(\w)\w+)$/g
 
-        if (Object.keys(results).length && results.items.length) {
+        if (Object.keys(results).length && results.items !== undefined) {
             return (
                 <div>
               
@@ -69,13 +71,19 @@ export default function Search(props) {
                             <img className="git-user-pic" src={res.avatar_url} alt={`${res.login}'s Avatar`} />
                             <h3 className="git-user-name">{res.login}</h3> 
                             <h6 className="git-user-type">{res.type}</h6>
-                            <a className="git-user-repo" href={res.repos_url}>Repos</a>
+                            <a className="git-user-repo" href={`users/${res.repos_url.match(regex)}`}>Repos</a>
                             </div>
                         ) }
                     })}
                     
                 </div>
             )
+        } else if (results.items === undefined && searchText !== "" && loaded) {
+                return(
+                    <div>
+                        <h4>Error: Too many requests. Github limit is 10 requests per minute.</h4>
+                    </div>
+                )
         }
     }
 
@@ -98,17 +106,6 @@ export default function Search(props) {
 
   
 
-{/*
-    useEffect(() => {
-        let pages = []
-        for (let i = 1; i < totalPages; i++) {
-            pages.push(i)
-        }
-        setPagesArr(pages)
-    }, [totalPages])
-    <Form.Control as="select">{pagesArr.map((x,y) => <option key={y}>{x}</option> )}</Form.Control>
-
-*/}
 
 
 
@@ -128,7 +125,8 @@ export default function Search(props) {
                 </Col>
                 <Col lg="3" md="3" sm="0"></Col>
             </Row>
-            <Row className="align-items-center">
+           
+            
                 <div className="git-btn-group-div" >
                 <h3 className="git-btn-group-text">User Type:</h3>
                 <ButtonGroup className="git-btn-group" label="User Type:" >
@@ -137,7 +135,7 @@ export default function Search(props) {
                     <Button variant={type === "Organization" ? "secondary" : "primary"} onClick={() => setType("Organization")}>Organization</Button>
                 </ButtonGroup>
                 </div>
-            </Row>
+            
 
             <div className="git-results-outer-div">
             <h4 className="git-results-info-text">{"Searching for: " + searchText}</h4>
@@ -154,7 +152,7 @@ export default function Search(props) {
                 <Button className="git-userpages-right" variant="primary" onClick={() => pageUp()}>&gt;</Button>
             </div>
 
-
+      
         </Container>
     )
 }
