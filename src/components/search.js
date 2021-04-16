@@ -1,8 +1,7 @@
-import React, {useEffect, useState, useCallback, useRef} from 'react'
-import {Container, Row, Col, Form, Button, ButtonGroup, select } from "react-bootstrap"
+import React, {useEffect, useState,} from 'react'
+import {Container, Row, Col, Form, Button, ButtonGroup } from "react-bootstrap"
 import {DebounceInput} from 'react-debounce-input'
 import "./search.css"
-import Select from "react-select"
 
 
 
@@ -12,7 +11,6 @@ import Select from "react-select"
 export default function Search(props) {
 
     
-    const [user, setUser] = useState({})
     const [searchText, setSearchText] = useState("")
     const [result, setResult]= useState({})
     const [page, setPage] = useState(1)

@@ -3,7 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faStar, faCodeBranch, faExclamationCircle} from "@fortawesome/free-solid-svg-icons"
 import {faJs, faPython, faPhp, faJava, faHtml5, faCss3} from "@fortawesome/free-brands-svg-icons"
 import {Button, Form, ButtonGroup} from "react-bootstrap"
-import { Icon, InlineIcon } from '@iconify/react'
+import { Icon } from '@iconify/react'
 import bxlCPlusPlus from '@iconify-icons/bx/bxl-c-plus-plus'
 import typescriptIcon from '@iconify-icons/cib/typescript';
 import "./repos.css"
