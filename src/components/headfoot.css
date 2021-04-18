@@ -5,24 +5,61 @@
   grid-row: 1/2;
   display: grid;
 }
-.header > a {
+.gitproject-head-link {
   text-decoration: none;
   justify-self: center;
   align-self: center;
-  font-size: 2em;
+  font-size: 1.5em;
   color: #d8e8f5;
+  transition: 0.3s ease;
+}
+.gitproject-head-link:hover {
+  transform: translateY(-5px);
+  transition: 0.3s ease;
 }
 .nav-offset {
   z-index: -1;
 }
 .footer {
-    height: 10vh;
     background-color: #252525;
     grid-row: 3/4;
     display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    min-height: 15vh;
 }
 .footer > * {
-  justify-self: center;
   align-self: center;
   color: #d8e8f5;
+
 }
+.gitproject-footer-text {
+  grid-column: 1/7;
+  grid-row: 1/4;
+  padding: 1em ;
+}
+.gitproject-footer-link {
+  grid-column: 7/9;
+  justify-self: left;
+  padding: 3px;
+  margin: 0;
+}
+
+@media only screen and (max-width: 576px) {
+  .gitproject-footer-text {
+    grid-column: 1/9;
+    grid-row: 1/2;
+    justify-self: center;
+    padding: 10px;
+    margin: 0;
+  }
+  .gitproject-footer-link {
+    grid-column: 1/9;
+    justify-self: center;
+  }
+  header > a {
+    font-size: 1em;
+  }
+
+}
+
+

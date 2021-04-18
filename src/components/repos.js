@@ -15,7 +15,7 @@ import "./search.css"
 const Repos = ({match}) => {
     const [results, setResults] = useState({})
     const [page, setPage] = useState(1)
-    const [sort, setSort] = useState("forks")
+    const [sort, setSort] = useState("stars")
     const [pageCounter, setPageCounter] = useState(1)
     const [totalPages, setTotalPages] = useState()
     const [loaded, setLoaded] = useState(false)
@@ -24,7 +24,7 @@ const Repos = ({match}) => {
 
    
     
-    
+    // searches the user's repos, sends it to state, and creates page count. 
     useEffect (() =>{
     fetch(`https://api.github.com/search/repositories?q=${encodeURIComponent(`user:${id} sort:${sort}`)}&per_page=10&page=${page}`)
     .then(result => result.json())
@@ -43,13 +43,14 @@ const Repos = ({match}) => {
     
     const renderResults = () => {
         
-
+        // renders the user repos dynamically from the "results" state array. 
         if (results.items !== undefined) {
         return (
         <div className="git-repos-container">
         {results.items.map(res => { 
             let updated = res.updated_at.replace(/[A-Z]/g, " ")
             let language 
+            // changes language icons for some languages
             switch(res.language) {
                 case "HTML":
                 language=<FontAwesomeIcon icon={faHtml5} style={{fontSize:"1.5em"}} />
@@ -93,7 +94,9 @@ const Repos = ({match}) => {
             )})}
         </div>
         )
-        } else if (results.items === undefined && loaded) {
+        } else 
+        // gives an error message if user makes too many requests
+        if (results.items === undefined && loaded) {
             return (
                 <div style={{height: "80vh"}}>
                     <h4 style={{textAlign:"center"}}>Error: Too many requests. Github limit is 10 requests per minute. </h4>
@@ -103,9 +106,11 @@ const Repos = ({match}) => {
         
     }
 
+    // rerenders the results when user sorts or gets new results.
     useEffect(()=>{
         renderResults()
         setPageCounter(page)
+        console.log(results)
     }, [results, sort])
 
     const pageDown = () => {
@@ -121,7 +126,7 @@ const Repos = ({match}) => {
 
     return (
         <div>
-            <h4 style={{textAlign:"center", margin:"0.5em 0"}}>Listing repos of <span style={{textDecoration: "underline"}}>{id}</span></h4>
+            <h4 style={{textAlign:"center", margin:"0.5em 0"}}>Listing repos of <span style={{textDecoration: "underline"}}>{id}</span>. {results.items !== undefined && `Repos found: ${results.total_count}`}</h4>
             <div style={{margin:"1em 0"}} className="git-repos-btn-group-div" >
             <h3 className="git-repos-btn-group-text">Sort by:</h3>
                 <ButtonGroup className="git-repos-btn-group" label="Sort by:" >

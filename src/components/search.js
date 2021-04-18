@@ -40,7 +40,7 @@ export default function Search(props) {
 
     const renderResults = () => {
         const results = result
-        let regex = /(((\w|\d)\w+)|((\w|\d))\/(\w)\w+)$/g
+        let regex = /(((\w|\d)\w+)|((\w|\d)\w+)\/(\w)\w+)$/g
 
         if (Object.keys(results).length && results.items !== undefined) {
             return (
@@ -108,7 +108,7 @@ export default function Search(props) {
 
 
     return (
-        <Container fluid style={{minHeight: "80vh",}}>
+        <Container fluid style={{minHeight: "20vh",}}>
             <Row style={{margin: "0.5em 0",}}>
                 <Col lg="3"  md="3" sm="0"></Col>
                 <Col lg="6" md="6" sm="12" style={{padding: "0"}}>
@@ -125,7 +125,7 @@ export default function Search(props) {
             </Row>
            
             
-                <div className="git-btn-group-div" >
+               <div className="git-btn-group-div" >
                 <h3 className="git-btn-group-text">User Type:</h3>
                 <ButtonGroup className="git-btn-group" label="User Type:" >
                     <Button variant={type === "Any" ? "secondary" : "primary"} onClick={() => setType("Any")}>Any</Button>
@@ -136,19 +136,19 @@ export default function Search(props) {
             
 
             <div className="git-results-outer-div">
-            <h4 className="git-results-info-text">{"Searching for: " + searchText}</h4>
+           {loaded && <h4 className="git-results-info-text">{"Searching for: " + searchText}</h4>}
             <div className="git-results-div">{renderResults()}</div>
             </div>
 
 
-            <div className="git-userpages-div">
+           { loaded && <div className="git-userpages-div">
                 <Button className="git-userpages-left" variant="primary" onClick={() => pageDown()}>&lt;</Button>
                 
                 <Form.Control placeholder={`${page}`} className="git-userpages-number" type="number" min="1" max={totalPages} value={pageCounter} onChange={e => setPageCounter(e.target.value)} />
                 <Button className="git-userpages-go" variant="primary" onClick={() => setPage(pageCounter)}>Go</Button>
                 
                 <Button className="git-userpages-right" variant="primary" onClick={() => pageUp()}>&gt;</Button>
-            </div>
+            </div>}
 
       
         </Container>

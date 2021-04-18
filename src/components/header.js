@@ -4,7 +4,7 @@ import "./headfoot.css"
 export default function Header() {
     return (
         <div className="header">
-            <a href="/users">HOME</a>
+            <a className="gitproject-head-link" href="/users">Github User/Repository Searcher </a>
         </div>
     )
 }
