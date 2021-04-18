@@ -1,4 +1,4 @@
-import React, {useEffect, useState,} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Container, Row, Col, Form, Button, ButtonGroup } from "react-bootstrap"
 import {DebounceInput} from 'react-debounce-input'
 import "./search.css"
@@ -112,7 +112,7 @@ export default function Search(props) {
             <Row style={{margin: "0.5em 0",}}>
                 <Col lg="3"  md="3" sm="0"></Col>
                 <Col lg="6" md="6" sm="12" style={{padding: "0"}}>
-                <Form center>
+                <Form>
                 <DebounceInput
                 element={Form.Control}
                 debounceTimeout={1000} 
