@@ -132,7 +132,7 @@ const Repos = ({match}) => {
                 <ButtonGroup className="git-repos-btn-group" label="Sort by:" >
                     <Button variant={sort === "stars" ? "secondary" : "primary"} onClick={() => setSort("stars")}>Stars</Button>
                     <Button variant={sort === "forks" ? "secondary" : "primary"} onClick={() => setSort("forks")}>Forks</Button>
-                    <Button variant={sort === "update" ? "secondary" : "primary"} onClick={() => setSort("update")}>Last Update</Button>
+                    <Button variant={sort === "updated" ? "secondary" : "primary"} onClick={() => setSort("updated")}>Last Update</Button>
                 </ButtonGroup>
             </div>
 
