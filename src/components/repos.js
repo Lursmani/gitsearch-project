@@ -31,11 +31,9 @@ const Repos = ({match}) => {
     .then(data => {
                 setResults(data)
                 setTotalPages(Math.ceil(data.total_count / 10))
-                console.log(Math.ceil(data.total_count / 10))    
                 setLoaded(true)
 }         
     )
-    .then(console.log(results))
  
     }, [page, sort])
 
@@ -110,7 +108,6 @@ const Repos = ({match}) => {
     useEffect(()=>{
         renderResults()
         setPageCounter(page)
-        console.log(results)
     }, [results, sort])
 
     const pageDown = () => {
