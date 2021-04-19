@@ -17,12 +17,16 @@ export default function Search(props) {
     const [pageCounter, setPageCounter] = useState(1)
     const [totalPages, setTotalPages] = useState()
     const [type, setType] = useState("Any")
+    const [status, setStatus] = useState("")
     const [loaded, setLoaded] = useState(false)
     
     useEffect(() => {
         if (searchText !== "") {
         fetch(`https://api.github.com/search/users?q=${searchText}&per_page=10&page=${page}`)
-        .then (response => response.json())
+        .then (response => { 
+            setStatus(response.status)
+            return response.json()
+        })
         .then (
             results => {
                 setResult(results)
@@ -40,7 +44,7 @@ export default function Search(props) {
 
     const renderResults = () => {
         const results = result
-        let regex = /(((\w|\d)\w+)|((\w|\d)\w+)\/(\w)\w+)$/g
+        let regex = /([^/]+)\/((\w)\w+)$/g
 
         if (Object.keys(results).length && results.items !== undefined) {
             return (
@@ -79,7 +83,7 @@ export default function Search(props) {
         } else if (results.items === undefined && searchText !== "" && loaded) {
                 return(
                     <div>
-                        <h4>Error: Too many requests. Github limit is 10 requests per minute.</h4>
+                        <h4>Error:{status}</h4>
                     </div>
                 )
         }

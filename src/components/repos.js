@@ -19,6 +19,7 @@ const Repos = ({match}) => {
     const [pageCounter, setPageCounter] = useState(1)
     const [totalPages, setTotalPages] = useState()
     const [loaded, setLoaded] = useState(false)
+    const [status, setStatus] = useState("")
     const id = match.params.id
 
 
@@ -27,14 +28,18 @@ const Repos = ({match}) => {
     // searches the user's repos, sends it to state, and creates page count. 
     useEffect (() =>{
     fetch(`https://api.github.com/search/repositories?q=${encodeURIComponent(`user:${id} sort:${sort}`)}&per_page=10&page=${page}`)
-    .then(result => result.json())
+    .then(result => { 
+        setStatus(result.status)  
+       return result.json()
+      
+    }
+        )
     .then(data => {
                 setResults(data)
                 setTotalPages(Math.ceil(data.total_count / 10))
                 setLoaded(true)
 }         
     )
- 
     }, [page, sort])
 
 
@@ -42,7 +47,7 @@ const Repos = ({match}) => {
     const renderResults = () => {
         
         // renders the user repos dynamically from the "results" state array. 
-        if (results.items !== undefined) {
+        if (status > 199 && status < 300 && loaded) {
         return (
         <div className="git-repos-container">
         {results.items.map(res => { 
@@ -94,10 +99,10 @@ const Repos = ({match}) => {
         )
         } else 
         // gives an error message if user makes too many requests
-        if (results.items === undefined && loaded) {
+        if (loaded) {
             return (
                 <div style={{height: "80vh"}}>
-                    <h4 style={{textAlign:"center"}}>Error: Too many requests. Github limit is 10 requests per minute. </h4>
+                    <h4 style={{textAlign:"center"}}>Error {status}</h4>
                 </div>
             )
         }
@@ -123,7 +128,7 @@ const Repos = ({match}) => {
 
     return (
         <div>
-            <h4 style={{textAlign:"center", margin:"0.5em 0"}}>Listing repos of <span style={{textDecoration: "underline"}}>{id}</span>. {results.items !== undefined && `Repos found: ${results.total_count}`}</h4>
+            <h4 style={{textAlign:"center", margin:"0.5em 0"}}>Listing repos of <span style={{textDecoration: "underline"}}>{id}</span>. {status > 199 && status < 300 && `Repos found: ${results.total_count}`}</h4>
             <div style={{margin:"1em 0"}} className="git-repos-btn-group-div" >
             <h3 className="git-repos-btn-group-text">Sort by:</h3>
                 <ButtonGroup className="git-repos-btn-group" label="Sort by:" >
