@@ -31,7 +31,6 @@ export default function Search(props) {
             results => {
                 setResult(results)
                 setTotalPages(Math.ceil(results.total_count / 10))
-                console.log(Math.ceil(results.total_count / 10))
                 setLoaded(true)
             }
         )
@@ -52,7 +51,6 @@ export default function Search(props) {
               
         
                     {results.items.map((res) => {
-                        console.log(res.login)
                         let userType
 
                         if (type === "Any") {

@@ -117,11 +117,9 @@ const Repos = ({match}) => {
 
     const pageDown = () => {
         page > 1 && setPage(page - 1)
-        console.log(page)
     }
     const pageUp = () => {
         page < totalPages && setPage(page + 1)
-        console.log(page)
     }
 
 
